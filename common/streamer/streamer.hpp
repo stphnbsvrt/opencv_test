@@ -74,6 +74,12 @@ protected:
 
     cv::VideoCapture m_vc;
 
+    ///
+    /// \brief Latest frame from stream
+    ///
+
+    cv::Mat m_frame;
+
     //////////////////////////////////////////////////////////////
     // Stream() member variables
     //////////////////////////////////////////////////////////////
@@ -111,12 +117,6 @@ protected:
     ///
 
     std::string m_display_name;
-
-    ///
-    /// \brief Frame to display
-    ///
-
-    cv::Mat m_display_frame;
 
     ///
     /// \brief Flag to tell display thread to stop execution

@@ -33,6 +33,12 @@ include_directories(${STREAMER_DIR})
 set(STREAMER_SRC_FILES ${STREAMER_DIR}/streamer.cpp)
 
 ####################################################
+# Defined
+####################################################
+add_definitions(-D_SOURCE_DIR_="${CMAKE_SOURCE_DIR}")
+
+####################################################
 # Project directories
 ####################################################
 add_subdirectory(hello_camera)
+add_subdirectory(tests)
