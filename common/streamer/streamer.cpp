@@ -42,7 +42,7 @@ void Streamer::startStream() {
 void Streamer::stream() {
     try {
         while(true == m_continue_stream) {
-            m_vc.read(m_frame);
+            updateStreamFrame();
         }
     }
     catch(...) {
@@ -52,6 +52,9 @@ void Streamer::stream() {
     }
 }
 
+void Streamer::updateStreamFrame() {
+    m_vc.read(m_frame);
+}
 
 void Streamer::stopStream() {
 
@@ -89,9 +92,7 @@ void Streamer::Display() {
     //no exceptions allowed
     try {
         while(true == m_continue_display) {
-            cv::imshow(m_display_name, m_frame);
-            //TODO: this should be configurable
-            cv::waitKey(5);
+            showDisplay();
         }
     }
     catch(...) {
@@ -99,6 +100,12 @@ void Streamer::Display() {
         //rethrow after we've joined
         m_display_exception = std::current_exception();
     }
+}
+
+void Streamer::showDisplay() {
+    cv::imshow(m_display_name, m_frame);
+    //TODO: this should be configurable
+    cv::waitKey(5);
 }
 
 void Streamer::stopDisplay() {

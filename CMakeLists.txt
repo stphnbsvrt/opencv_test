@@ -31,6 +31,7 @@ include_directories(${STREAMER_DIR})
 # Common source files
 ####################################################
 set(STREAMER_SRC_FILES ${STREAMER_DIR}/streamer.cpp)
+set(STREAMER_SRC_FILES ${STREAMER_SRC_FILES};${STREAMER_DIR}/fgStreamer.cpp)
 
 ####################################################
 # Defined
@@ -41,4 +42,5 @@ add_definitions(-D_SOURCE_DIR_="${CMAKE_SOURCE_DIR}")
 # Project directories
 ####################################################
 add_subdirectory(hello_camera)
+add_subdirectory(background_subtractor)
 add_subdirectory(tests)

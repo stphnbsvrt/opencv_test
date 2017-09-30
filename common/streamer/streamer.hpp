@@ -1,6 +1,9 @@
 #include <thread>
 #include <opencv2/opencv.hpp>
 
+#ifndef _STREAMER_HPP_
+#define _STREAMER_HPP_
+
 ///
 /// \brief Wrapper for VideoCapture class to capture a camera stream
 /// Planned benefits: option to show frames in window while other operations are being performed
@@ -57,6 +60,12 @@ protected:
     void stream();
 
     ///
+    /// \brief Virtual function to update the next frame
+    ///
+
+    virtual void updateStreamFrame();
+
+    ///
     /// \brief Stop reading images from stream
     ///
 
@@ -67,6 +76,12 @@ protected:
     ///
 
     void Display();
+
+    ///
+    /// \brief Virtual function for how to show the display
+    ///
+
+    virtual void showDisplay();
 
     ///
     /// \brief Underlying video source
@@ -131,3 +146,5 @@ protected:
     std::exception_ptr m_display_exception;
 
 };
+
+#endif //_STREAMER_HPP_
