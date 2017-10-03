@@ -2,7 +2,8 @@ cmake_minimum_required (VERSION 3.9.1)
 
 project (hello_camera)
 
-set(source_files "main.cpp;streamerUT.cpp;${STREAMER_SRC_FILES}")
+set(source_files "main.cpp;streamerUT.cpp;filterUT.cpp")
+set(source_files "${source_files};${STREAMER_SRC_FILES};${FILTER_SRC_FILES}")
 add_executable(repo_test ${source_files})
 
 #link opencv to target

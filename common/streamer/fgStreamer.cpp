@@ -32,7 +32,7 @@ cv::Ptr<cv::BackgroundSubtractor> FGStreamer::createBackgroundSubtractor(int typ
 
 void FGStreamer::updateStreamFrame() {
 
-    m_vc.read(m_frame);
+    Streamer::updateStreamFrame();
     if(nullptr != m_bg_sub) {
         m_bg_sub->apply(m_frame, m_fg_mask);
     }

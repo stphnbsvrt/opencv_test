@@ -26,6 +26,15 @@ TEST(StreamerTest, restartDisplay) {
     my_streamer.stopDisplay();
 }
 
+TEST(StreamerTest, smoothDisplay) {
+
+    Streamer my_streamer(0);
+    my_streamer.startDisplay("Smoothing");
+    sleep(1);
+    my_streamer.addFilter(Filter::Type::BLUR, {10, 10});
+    sleep(1);
+}
+
 TEST(StreamerTest, misuseStreamer) {
 
     Streamer my_streamer(0);
@@ -55,4 +64,5 @@ TEST(StreamerTest, misuseStreamer) {
     }
     EXPECT_TRUE(caught);
 }
+
 

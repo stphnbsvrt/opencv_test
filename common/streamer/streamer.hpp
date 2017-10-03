@@ -1,5 +1,6 @@
 #include <thread>
 #include <opencv2/opencv.hpp>
+#include "filter.hpp"
 
 #ifndef _STREAMER_HPP_
 #define _STREAMER_HPP_
@@ -45,6 +46,17 @@ public:
 
     void stopDisplay();
 
+    ///
+    /// \brief Add a filter to apply
+    /// Multiple filters will be applied in order
+    ///
+    /// \param[in] type Type of filter to add
+    /// \param[in] args List of uint32_t args
+    /// Interpretation of args defined by type
+    ///
+
+    void addFilter(Filter::Type type, std::vector<uint32_t> args) { m_filter.addFilter(type, args); };
+
 protected:
 
     ///
@@ -88,6 +100,12 @@ protected:
     ///
 
     cv::VideoCapture m_vc;
+
+    ///
+    /// \brief Filter to apply to images from source
+    ///
+
+    Filter m_filter;
 
     ///
     /// \brief Latest frame from stream

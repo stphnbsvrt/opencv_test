@@ -19,8 +19,14 @@ int main(int argc, char* argv[]) {
     std::cout << "Subtractor type: ";
     std::cin >> subtractor_type;
 
+    //get blurring square size
+    uint32_t blur_kernel_width;
+    std::cout << "Blur kernel size: ";
+    std::cin >> blur_kernel_width;
+
     //open streamer
     auto streamer = std::make_shared<FGStreamer>(device_idx, subtractor_type);
+    streamer->addFilter(Filter::Type::BLUR, {blur_kernel_width, blur_kernel_width});
 
     //test out the threaded display
     uint32_t display_seconds;

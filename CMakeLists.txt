@@ -21,17 +21,22 @@ endif()
 # Directory locations
 ####################################################
 set(STREAMER_DIR ${CMAKE_SOURCE_DIR}/common/streamer)
+set(FILTER_DIR ${CMAKE_SOURCE_DIR}/common/filter)
 
 ####################################################
 # Include them
 ####################################################
 include_directories(${STREAMER_DIR})
+include_directories(${FILTER_DIR})
 
 ####################################################
 # Common source files
 ####################################################
+set(FILTER_SRC_FILES ${FILTER_DIR}/filter.cpp)
+
 set(STREAMER_SRC_FILES ${STREAMER_DIR}/streamer.cpp)
 set(STREAMER_SRC_FILES ${STREAMER_SRC_FILES};${STREAMER_DIR}/fgStreamer.cpp)
+set(STREAMER_SRC_FILES ${STREAMER_SRC_FILES};${FILTER_SRC_FILES})
 
 ####################################################
 # Defined

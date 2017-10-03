@@ -53,7 +53,10 @@ void Streamer::stream() {
 }
 
 void Streamer::updateStreamFrame() {
-    m_vc.read(m_frame);
+    cv::Mat tmp_frame;
+    m_vc.read(tmp_frame);
+    m_filter.applyTo(tmp_frame);
+    m_frame = tmp_frame;
 }
 
 void Streamer::stopStream() {
